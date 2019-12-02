@@ -19,7 +19,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   void didChangeDependencies() {
     if (!_isloadedInitData) {
       final routeArgs =
-          ModalRoute.of(context).settings.arguments as Map<String, String>;
+          (ModalRoute.of(context).settings.arguments) as Map<String, String>;
       categoryTitle = routeArgs['title'];
       final categoryID = routeArgs['id'];
       displayedMeals = DUMMY_MEALS.where((meal) {
@@ -43,7 +43,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
           title: Text(categoryTitle),
         ),
         body: ListView.builder(
-          itemCount: DUMMY_MEALS.length,
+          itemCount: displayedMeals.length,
           itemBuilder: (BuildContext context, int index) {
             return MealItem(
               id: displayedMeals[index].id,
